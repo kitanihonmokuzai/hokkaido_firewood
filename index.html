@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="google-site-verification" content="vz-MwPHJHQtWKgzgBJTCtMab5ovdkaT6dSJQSc16Z3s" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HOKKAIDO FIREWOOD FROM KITANIHONMOKUZAI｜北海道産広葉樹の薪・旭川の薪ブランド</title>
 <meta name="description" content="北海道・旭川の北日本木材株式会社が、北海道産広葉樹の家具材端材から作る上質な薪。含水率約10%、火付きが良く爆ぜにくい薪をオリジナル巾着型トートバッグ入りで。キャンプ・サウナ・薪ストーブに。約600kgのフレコン薪配送も開始。">
@@ -504,6 +503,35 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
 .form-done p{font-size:13.5px;color:var(--kinari-dim)}
 .btn[disabled]{opacity:.55;pointer-events:none}
 
+
+/* ---------- メディア紹介 ---------- */
+.media{background:var(--bg2)}
+.yt{
+  position:relative;max-width:840px;margin:40px auto 0;
+  border-radius:var(--radius);overflow:hidden;cursor:pointer;
+  aspect-ratio:16/9;background:#000;
+  box-shadow:0 28px 70px rgba(0,0,0,.6);
+  border:1px solid var(--line);
+  transition:transform .4s,box-shadow .4s;
+}
+.yt:hover{transform:translateY(-4px);box-shadow:0 34px 80px rgba(0,0,0,.7),0 0 0 1px rgba(224,154,74,.3)}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .4s}
+.yt:hover img{opacity:1}
+.yt-play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:76px;height:76px;border-radius:50%;
+  background:linear-gradient(135deg,#e8a44e,#c0731f);color:#1a1208;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 36px rgba(224,154,74,.45);
+  transition:transform .35s;
+}
+.yt:hover .yt-play{transform:translate(-50%,-50%) scale(1.1)}
+.yt-play svg{margin-left:3px}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ch-link{color:var(--ember);border-bottom:1px solid rgba(224,154,74,.4)}
+.yt-note{text-align:center;margin-top:16px;font-size:12.5px;color:var(--kinari-dim)}
+.yt-note a{color:var(--ember);border-bottom:1px solid rgba(224,154,74,.4)}
+
 /* ---------- 会社ロゴ ---------- */
 .mq-tk{height:15px;width:auto;display:inline-block;opacity:.65;vertical-align:-2px}
 .marquee span{gap:32px}
@@ -837,6 +865,24 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
   </div>
 </section>
 
+<!-- メディア紹介 -->
+<section class="media grain">
+  <div class="wrap">
+    <p class="eyebrow rv">Media</p>
+    <h2 class="rv">「えむけい夫婦」さんに<br>ご紹介いただきました。</h2>
+    <p class="lead rv">YouTubeチャンネル<a href="https://youtube.com/@mk_huuhu" target="_blank" rel="noopener" class="ch-link">「えむけい夫婦」さん</a>に、当社の薪をご紹介いただきました。薪の質感や使い心地は動画がいちばん伝わります。ぜひご覧ください。</p>
+    <div class="yt rv" id="yt" data-yt="E5vzpD5IuaQ" role="button" tabindex="0" aria-label="紹介動画を再生">
+      <img src="https://i.ytimg.com/vi/E5vzpD5IuaQ/maxresdefault.jpg"
+           onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/E5vzpD5IuaQ/hqdefault.jpg'"
+           alt="HOKKAIDO FIREWOOD 紹介動画のサムネイル" loading="lazy">
+      <span class="yt-play" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+    </div>
+    <p class="yt-note rv">再生できない場合は <a href="https://youtu.be/E5vzpD5IuaQ" target="_blank" rel="noopener">YouTubeで見る</a>　/　<a href="https://youtube.com/@mk_huuhu" target="_blank" rel="noopener">えむけい夫婦さんのチャンネルはこちら</a></p>
+  </div>
+</section>
+
 <!-- 9. SNS -->
 <section>
   <div class="wrap">
@@ -1114,6 +1160,24 @@ document.querySelectorAll('[data-count]').forEach(function(el){ cntIO.observe(el
     box.appendChild(e);
   }
 })();
+
+// ===== YouTube クリックで再生(軽量埋め込み) =====
+(function(){
+  var yt = document.getElementById('yt');
+  if(!yt) return;
+  function play(){
+    if(yt.querySelector('iframe')) return;
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + yt.getAttribute('data-yt') + '?autoplay=1&rel=0';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture';
+    f.allowFullscreen = true;
+    f.title = 'HOKKAIDO FIREWOOD 紹介動画';
+    yt.appendChild(f);
+  }
+  yt.addEventListener('click', play);
+  yt.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); play(); }});
+})();
+
 </script>
 </body>
 </html>
