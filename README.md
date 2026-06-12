@@ -1,2 +1,0 @@
-# hokkaido_firewood
-lp
