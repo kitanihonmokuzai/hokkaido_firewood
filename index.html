@@ -344,6 +344,7 @@ header.solid{background:rgba(12,11,9,.92);border-bottom:1px solid var(--line)}
 }
 .fs small{display:block;font-size:11.5px;letter-spacing:.14em;color:var(--kinari-dim);margin-bottom:6px}
 .fs b{font-family:'Shippori Mincho B1',serif;font-size:clamp(24px,4vw,34px);color:var(--ember);font-weight:700}
+.fs b .price-num{font-size:clamp(38px,6.2vw,56px);line-height:1;letter-spacing:.01em}
 .fs span{font-size:13px;color:var(--kinari)}
 .frecon-targets{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 26px}
 .frecon-targets span{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:5px 14px;color:var(--kinari-dim)}
@@ -665,8 +666,8 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
 </section>
 
 <div class="marquee" aria-hidden="true"><div class="marquee-track" id="MQT">
-  <span>HOKKAIDO FIREWOOD <img class="mq-tk" data-img="tkmark" alt=""> FROM KITANIHON MOKUZAI <img class="mq-tk" data-img="tkmark" alt=""> ASAHIKAWA <img class="mq-tk" data-img="tkmark" alt=""> 広葉樹の薪 <img class="mq-tk" data-img="tkmark" alt=""> SUSTAINABLE <img class="mq-tk" data-img="tkmark" alt=""></span>
-  <span>HOKKAIDO FIREWOOD <img class="mq-tk" data-img="tkmark" alt=""> FROM KITANIHON MOKUZAI <img class="mq-tk" data-img="tkmark" alt=""> ASAHIKAWA <img class="mq-tk" data-img="tkmark" alt=""> 広葉樹の薪 <img class="mq-tk" data-img="tkmark" alt=""> SUSTAINABLE <img class="mq-tk" data-img="tkmark" alt=""></span>
+  <span>HOKKAIDO FIREWOOD <img class="mq-tk" data-img="tkmark" alt=""> FROM KITANIHON MOKUZAI <img class="mq-tk" data-img="tkmark" alt=""> ASAHIKAWA <img class="mq-tk" data-img="tkmark" alt=""> 広葉樹の薪 <img class="mq-tk" data-img="tkmark" alt=""> SUSTAINABLE</span>
+  <span>HOKKAIDO FIREWOOD <img class="mq-tk" data-img="tkmark" alt=""> FROM KITANIHON MOKUZAI <img class="mq-tk" data-img="tkmark" alt=""> ASAHIKAWA <img class="mq-tk" data-img="tkmark" alt=""> 広葉樹の薪 <img class="mq-tk" data-img="tkmark" alt=""> SUSTAINABLE</span>
 </div></div>
 
 <!-- 2. ブランドストーリー -->
@@ -713,7 +714,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
           <img data-img="wood" alt="HOKKAIDO FIREWOOD 小割薪のみタイプ" loading="lazy">
         </div>
         <div class="card-body">
-          <h3>HOKKAIDO FIREWOOD<br>FROM KITANIHONMOKUZAI<span style="font-size:13px;color:var(--kinari-dim)">(小割薪のみ)</span></h3>
+          <h3>HOKKAIDO FIREWOOD<br>FROM KITANIHONMOKUZAI<br><span style="font-size:13px;color:var(--kinari-dim)">(小割薪のみ)</span></h3>
           <p class="card-price"><b>¥1,800</b>(税込)</p>
           <div class="card-spec">
             <span>小割薪</span><span>焚付材</span><span>合計5kg</span><span>巾着型トートバッグ付き</span>
@@ -732,7 +733,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
           <div class="card-spec">
             <span>小割薪</span><span>焚付材</span><span>合計8kg</span><span>ステッカー付き</span><span>本社限定</span>
           </div>
-          <p>バッグを付けず、薪そのものをたっぷり8kg。<em>たくさん使う方や、リピートの方に</em>うれしいお得なセットです。オリジナルステッカー付き。<br><strong style="color:var(--ember)">本社でのみの販売となります。</strong></p>
+          <p>バッグを付けず、薪そのものをたっぷり8kg。<em>たくさん使う方や、リピートの方に</em>うれしいお得なセットです。オリジナルステッカー付き。<strong style="color:var(--ember)">本社でのみの販売となります。</strong></p>
         </div>
       </article>
     </div>
@@ -792,7 +793,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
       <img class="plx" data-plx="0.04" data-img="frecon" alt="フレコンにたっぷり詰まった北海道産広葉樹の薪。約600kgの大容量" loading="lazy">
     </div>
     <div class="frecon-stats">
-      <div class="fs rv"><small>価格</small><b>¥<span data-count="19800" data-comma="1">0</span></b><span> / 1コンテナ(税込)</span></div>
+      <div class="fs rv"><small>価格</small><b>¥<span class="price-num" data-count="19800" data-comma="1">0</span></b><span> / 1コンテナ(税込)</span></div>
       <div class="fs rv rv-d1"><small>内容量</small><b><span style="font-size:22px">約</span><span data-count="600">0</span></b><span>kg / 1コンテナ</span></div>
       <div class="fs rv rv-d2"><small>配送</small><b>無料</b><span> 本社から半径30km以内</span></div>
     </div>
@@ -858,7 +859,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
       <div class="form-done">
         <div class="ic">🔥</div>
         <h4>ご注文を受け付けました</h4>
-        <p>担当者より、設置場所・配送日の確認のご連絡を差し上げます。<br>2〜3営業日経っても連絡がない場合は、お手数ですがお電話(0166-24-1276)ください。</p>
+        <p>担当者より、設置場所・配送日の確認のご連絡を差し上げます。2〜3営業日経っても連絡がない場合は、お手数ですがお電話(0166-24-1276)ください。</p>
       </div>
     </div>
     <div style="text-align:center;margin-top:24px" class="rv">
@@ -879,7 +880,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
       <h2>火持ち重視の方へ。<br>大割薪、1㎥パレット販売。</h2>
       <p class="lead">小割は入りませんが、その分1本が大きく<strong style="color:var(--kinari)">火持ちが抜群</strong>。じっくり長く焚きたい<strong style="color:var(--kinari)">サウナや薪ストーブ</strong>に特におすすめの、期間限定の大容量薪です。</p>
       <div class="frecon-stats" style="margin:28px 0 20px">
-        <div class="fs"><small>価格</small><b>¥<span data-count="29800" data-comma="1">0</span></b><span> / 1パレット(税込)</span></div>
+        <div class="fs"><small>価格</small><b>¥<span class="price-num" data-count="29800" data-comma="1">0</span></b><span> / 1パレット(税込)</span></div>
         <div class="fs"><small>容量</small><b>1</b><span>㎥ / 1パレット</span></div>
         <div class="fs"><small>配送エリア</small><b>30</b><span>km圏内のみ</span></div>
       </div>
@@ -978,7 +979,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
         </div>
       </article>
       <article class="store soon rv rv-d2">
-        <p>販売先は順次追加予定です。<br>お取り扱いをご希望の店舗・キャンプ場さまは<br><a href="#contact" style="color:var(--ember);border-bottom:1px solid rgba(224,154,74,.4)">お問い合わせ</a>ください。</p>
+        <p>販売先は順次追加予定です。お取り扱いをご希望の店舗・キャンプ場さまは<a href="#contact" style="color:var(--ember);border-bottom:1px solid rgba(224,154,74,.4)">お問い合わせ</a>ください。</p>
       </article>
     </div>
   </div>
@@ -1034,7 +1035,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
       </a>
       <a class="sns rv rv-d1" href="https://www.instagram.com/kitanihonlumber" target="_blank" rel="noopener">
         <span class="ig"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
-        <span><b>会社Instagram</b><small>@kitanihonlumber ── 北日本木材の日々</small></span>
+        <span><b>北日本木材Instagram</b><small>@kitanihonlumber ── 北日本木材の日々</small></span>
         <span class="arrow">→</span>
       </a>
     </div>
@@ -1075,7 +1076,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
       <div class="form-done">
         <div class="ic">🔥</div>
         <h4>お問い合わせを受け付けました</h4>
-        <p>内容を確認のうえ、担当者よりご連絡いたします。<br>お急ぎの場合はお電話(0166-24-1276)でもどうぞ。</p>
+        <p>内容を確認のうえ、担当者よりご連絡いたします。お急ぎの場合はお電話(0166-24-1276)でもどうぞ。</p>
       </div>
 
     </div>
@@ -1096,7 +1097,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
         <dt>メール</dt><dd><a href="mailto:info1276@northjpn.co.jp">info1276@northjpn.co.jp</a></dd>
         <dt>公式HP</dt><dd><a href="https://northjpn.co.jp/" target="_blank" rel="noopener">https://northjpn.co.jp/</a></dd>
       </dl>
-      <p class="visit-note">商品の販売は営業時間内のみです。確実にお求めいただくため、お電話または問い合わせフォームでの事前のご連絡をおすすめします。<br>薪詰め放題の「おかわり」は、木取工場(旭川市新富3条1丁目9)のテントで無人販売を行っているため、休業日・営業時間外でもいつでもご利用いただけます。</p>
+      <p class="visit-note">商品の販売は営業時間内のみです。確実にお求めいただくため、お電話または問い合わせフォームでの事前のご連絡をおすすめします。薪詰め放題の「おかわり」は、木取工場(旭川市新富3条1丁目9)のテントで無人販売を行っているため、休業日・営業時間外でもいつでもご利用いただけます。</p>
     </div>
     <div class="rv rv-d2">
       <div class="store-photo" style="border-radius:var(--radius);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5)">
@@ -1110,8 +1111,8 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
 </section>
 
 <div class="marquee" aria-hidden="true"><div class="marquee-track" >
-  <span>HOKKAIDO FIREWOOD <img class="mq-tk" data-img="tkmark" alt=""> FROM KITANIHON MOKUZAI <img class="mq-tk" data-img="tkmark" alt=""> ASAHIKAWA <img class="mq-tk" data-img="tkmark" alt=""> 広葉樹の薪 <img class="mq-tk" data-img="tkmark" alt=""> SUSTAINABLE <img class="mq-tk" data-img="tkmark" alt=""></span>
-  <span>HOKKAIDO FIREWOOD <img class="mq-tk" data-img="tkmark" alt=""> FROM KITANIHON MOKUZAI <img class="mq-tk" data-img="tkmark" alt=""> ASAHIKAWA <img class="mq-tk" data-img="tkmark" alt=""> 広葉樹の薪 <img class="mq-tk" data-img="tkmark" alt=""> SUSTAINABLE <img class="mq-tk" data-img="tkmark" alt=""></span>
+  <span>HOKKAIDO FIREWOOD <img class="mq-tk" data-img="tkmark" alt=""> FROM KITANIHON MOKUZAI <img class="mq-tk" data-img="tkmark" alt=""> ASAHIKAWA <img class="mq-tk" data-img="tkmark" alt=""> 広葉樹の薪 <img class="mq-tk" data-img="tkmark" alt=""> SUSTAINABLE</span>
+  <span>HOKKAIDO FIREWOOD <img class="mq-tk" data-img="tkmark" alt=""> FROM KITANIHON MOKUZAI <img class="mq-tk" data-img="tkmark" alt=""> ASAHIKAWA <img class="mq-tk" data-img="tkmark" alt=""> 広葉樹の薪 <img class="mq-tk" data-img="tkmark" alt=""> SUSTAINABLE</span>
 </div></div>
 
 <!-- 11. 最終CTA -->
