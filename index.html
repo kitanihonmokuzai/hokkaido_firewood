@@ -67,7 +67,31 @@ section{padding:88px 0;position:relative}
   color:var(--ember);font-size:12px;letter-spacing:.28em;
   text-transform:uppercase;margin-bottom:18px;
 }
-.eyebrow::before{content:"";width:34px;height:1px;background:var(--ember)}
+.eyebrow::before{
+  content:"";width:8px;height:8px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 40% 35%,#ffd89b,#e8923a 55%,#b9561a);
+  box-shadow:0 0 8px rgba(230,140,50,.85),0 0 16px rgba(230,140,50,.4);
+  animation:ember-pulse 2.8s ease-in-out infinite;
+}
+@keyframes ember-pulse{
+  0%,100%{opacity:.7;box-shadow:0 0 6px rgba(230,140,50,.6),0 0 12px rgba(230,140,50,.25);transform:scale(.92)}
+  50%{opacity:1;box-shadow:0 0 12px rgba(255,170,70,1),0 0 22px rgba(230,140,50,.55);transform:scale(1.08)}
+}
+@media (prefers-reduced-motion:reduce){.eyebrow::before{animation:none}}
+/* ②カウントアップ点火グロー(数字に火が灯る) */
+.q-num b,.fs b{transition:text-shadow .4s ease,color .4s ease}
+.igniting{
+  text-shadow:
+    0 0 calc(6px + var(--ig,0)*14px) rgba(255,170,70,calc(.3 + var(--ig,0)*.7)),
+    0 0 calc(12px + var(--ig,0)*26px) rgba(224,130,40,calc(.15 + var(--ig,0)*.45));
+}
+.ignited{
+  animation:ignite-flash .9s ease-out;
+}
+@keyframes ignite-flash{
+  0%{text-shadow:0 0 20px rgba(255,190,90,1),0 0 40px rgba(230,140,50,.7);color:#ffce8a}
+  100%{text-shadow:0 0 0 transparent;color:var(--ember)}
+}
 h2{
   font-family:'Shippori Mincho B1',serif;
   font-size:clamp(24px,5vw,38px);
@@ -131,15 +155,42 @@ header.solid{background:rgba(12,11,9,.92);border-bottom:1px solid var(--line)}
 .hero-glow{
   position:absolute;left:50%;bottom:-30%;width:140vw;height:90vh;
   transform:translateX(-50%);
-  background:radial-gradient(ellipse at center,rgba(224,140,50,.16),rgba(180,90,20,.06) 45%,transparent 70%);
+  background:radial-gradient(ellipse at center,rgba(224,140,50,.18),rgba(180,90,20,.06) 45%,transparent 70%);
   animation:flame 5.5s ease-in-out infinite;
   z-index:0;
+}
+/* 揺らめく炎のベース光(画面下端から立ち上る) */
+.hero-flames{position:absolute;left:0;right:0;bottom:0;height:55vh;z-index:1;pointer-events:none;overflow:hidden}
+.hero-flames::before,.hero-flames::after{
+  content:"";position:absolute;bottom:-20%;left:50%;
+  width:120vw;height:120%;transform:translateX(-50%);
+  mix-blend-mode:screen;filter:blur(8px);
+}
+.hero-flames::before{
+  background:
+    radial-gradient(60% 80% at 30% 100%,rgba(230,120,30,.28),transparent 60%),
+    radial-gradient(55% 75% at 68% 100%,rgba(240,160,50,.24),transparent 62%),
+    radial-gradient(70% 90% at 50% 100%,rgba(200,70,20,.20),transparent 65%);
+  animation:flameRise 4.2s ease-in-out infinite;
+}
+.hero-flames::after{
+  background:
+    radial-gradient(45% 70% at 45% 100%,rgba(255,200,90,.22),transparent 60%),
+    radial-gradient(50% 80% at 60% 100%,rgba(235,130,40,.20),transparent 60%);
+  animation:flameRise 3.1s ease-in-out infinite reverse;
 }
 @keyframes flame{
   0%,100%{opacity:.75;transform:translateX(-50%) scale(1)}
   35%{opacity:1;transform:translateX(-51%) scale(1.05)}
   65%{opacity:.85;transform:translateX(-49%) scale(.98)}
 }
+@keyframes flameRise{
+  0%,100%{transform:translateX(-50%) scaleY(1) skewX(0deg);opacity:.85}
+  25%{transform:translateX(-51%) scaleY(1.12) skewX(2deg);opacity:1}
+  50%{transform:translateX(-49%) scaleY(.95) skewX(-2deg);opacity:.8}
+  75%{transform:translateX(-50.5%) scaleY(1.08) skewX(1deg);opacity:.95}
+}
+@media (prefers-reduced-motion:reduce){.hero-flames{display:none}}
 .hero-inner{position:relative;z-index:3;display:grid;gap:36px;align-items:center}
 @media(min-width:920px){.hero-inner{grid-template-columns:1.05fr .95fr;gap:48px}}
 .hero-logo{width:120px;margin-bottom:22px;filter:drop-shadow(0 0 24px rgba(224,154,74,.25));animation:logoIn 1.4s ease both}
@@ -218,7 +269,14 @@ header.solid{background:rgba(12,11,9,.92);border-bottom:1px solid var(--line)}
 .card p em{font-style:normal;color:var(--ember)}
 
 /* ---------- 品質 ---------- */
-.quality{background:var(--bg2)}
+.quality{background:var(--bg2);position:relative;overflow:hidden}
+.quality::after{
+  content:"";position:absolute;left:50%;bottom:-30%;
+  width:130vw;height:60vh;transform:translateX(-50%);
+  background:radial-gradient(ellipse 60% 70% at 50% 100%,rgba(224,130,40,.12),rgba(180,80,20,.05) 45%,transparent 70%);
+  pointer-events:none;animation:flame 6.5s ease-in-out infinite;z-index:0;
+}
+.quality .wrap{position:relative;z-index:1}
 .q-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:44px}
 @media(min-width:760px){.q-grid{grid-template-columns:repeat(3,1fr);gap:20px}}
 .q-item{
@@ -582,6 +640,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 120px;text-align:center;f
 <!-- 1. ファーストビュー -->
 <section class="hero">
   <div class="hero-glow"></div>
+  <div class="hero-flames"></div>
   <canvas id="sparks"></canvas>
   <div class="wrap hero-inner">
     <div>
@@ -1114,35 +1173,60 @@ document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
   function resize(){ cv.width = hero.offsetWidth; cv.height = hero.offsetHeight; }
   resize(); window.addEventListener('resize', resize);
   function spawn(){
+    // 画面下のあちこちから生まれ、中央寄りに引き寄せられながら上昇
     return {
       x: Math.random()*cv.width,
-      y: cv.height + 10,
-      vx: (Math.random()-0.5)*0.35,
-      vy: -(0.35 + Math.random()*0.85),
-      r: 0.6 + Math.random()*1.7,
-      life: 0, max: 220 + Math.random()*200,
-      hue: 28 + Math.random()*16
+      y: cv.height + 8,
+      vx: (Math.random()-0.5)*0.5,
+      vy: -(0.45 + Math.random()*1.05),
+      r: 0.7 + Math.random()*2.0,
+      life: 0, max: 200 + Math.random()*220,
+      sway: 0.3 + Math.random()*0.5,        // 横揺れの大きさ
+      phase: Math.random()*6.28,            // 揺れの位相
+      flick: 0.6 + Math.random()*0.4,       // ちらつきの強さ
+      seed: Math.random()*100
     };
   }
-  for(var i=0;i<26;i++){ var s=spawn(); s.y = Math.random()*cv.height; sparks.push(s); }
-  function tick(){
+  for(var i=0;i<34;i++){ var s=spawn(); s.y = Math.random()*cv.height; sparks.push(s); }
+
+  function tick(t){
     if(!running){ requestAnimationFrame(tick); return; }
     ctx.clearRect(0,0,cv.width,cv.height);
+    // 加算合成で重なった粒が明るく＝炎の芯のように見える
+    ctx.globalCompositeOperation = 'lighter';
     sparks.forEach(function(s,i){
       s.life++;
-      s.x += s.vx + Math.sin((s.life+i*7)*0.04)*0.25;
+      var p = s.life/s.max;               // 0(根元)→1(上端で消える)
+      // 上昇するほど加速し、横にゆらめく(炎が立ち上る感じ)
+      s.vy -= 0.0016;
+      s.x += s.vx + Math.sin((s.life*0.05)+s.phase)*s.sway;
       s.y += s.vy;
-      var a = Math.max(0, 1 - s.life/s.max) * 0.75;
+
+      // ちらつき(明滅)
+      var flicker = 0.7 + 0.3*Math.sin(s.life*0.4 + s.seed);
+      var a = Math.max(0, 1 - p) * 0.85 * flicker * s.flick;
+
+      // 温度勾配: 根元=白っぽい黄(55°,薄い彩度) → 中盤=橙 → 上=赤へ冷える
+      var hue = 50 - p*40;                 // 50→10
+      var sat = 70 + p*25;                 // 70→95%
+      var lig = 78 - p*40;                 // 78→38%
+      var rad = s.r * (1 - p*0.45);        // 上にいくほど細る
+
+      var grad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, rad*3.2);
+      grad.addColorStop(0, 'hsla('+hue+','+sat+'%,'+lig+'%,'+a+')');
+      grad.addColorStop(0.4, 'hsla('+(hue-6)+','+sat+'%,'+(lig-12)+'%,'+(a*0.6)+')');
+      grad.addColorStop(1, 'hsla('+(hue-10)+','+sat+'%,40%,0)');
+      ctx.fillStyle = grad;
       ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-      ctx.fillStyle = 'hsla('+s.hue+',85%,62%,'+a+')';
-      ctx.shadowBlur = 8; ctx.shadowColor = 'rgba(230,150,60,.6)';
-      ctx.fill(); ctx.shadowBlur = 0;
-      if(s.life > s.max || s.y < -12) sparks[i] = spawn();
+      ctx.arc(s.x, s.y, rad*3.2, 0, Math.PI*2);
+      ctx.fill();
+
+      if(s.life > s.max || s.y < -14) sparks[i] = spawn();
     });
+    ctx.globalCompositeOperation = 'source-over';
     requestAnimationFrame(tick);
   }
-  tick();
+  requestAnimationFrame(tick);
   // 画面外では停止
   new IntersectionObserver(function(en){ running = en[0].isIntersecting; }).observe(hero);
 })();
@@ -1210,16 +1294,26 @@ var cntIO = new IntersectionObserver(function(es){
     cntIO.unobserve(en.target);
     var el = en.target, to = parseInt(el.getAttribute('data-count'),10);
     var comma = el.getAttribute('data-comma');
+    // 光らせる対象は数字を含む親の<b>(なければ自身)
+    var glow = el.closest('b') || el;
+    glow.classList.add('igniting');
     var t0 = null, dur = 1400;
     function step(t){
       if(!t0) t0 = t;
-      var p = Math.min(1,(t-t0)/dur);
-      p = 1 - Math.pow(1-p, 3);
+      var raw = Math.min(1,(t-t0)/dur);
+      var p = 1 - Math.pow(1-raw, 3);
       var v = Math.round(to * p);
       el.textContent = comma ? v.toLocaleString('ja-JP') : v;
-      if(p < 1) requestAnimationFrame(step);
+      // 燃え上がりに合わせて光量を上げる(CSS変数で制御)
+      glow.style.setProperty('--ig', raw.toFixed(3));
+      if(raw < 1){ requestAnimationFrame(step); }
+      else {
+        glow.classList.remove('igniting');
+        glow.classList.add('ignited');           // 完了時にふっと灯る
+        setTimeout(function(){ glow.classList.remove('ignited'); glow.style.removeProperty('--ig'); }, 900);
+      }
     }
-    if(reduced){ el.textContent = comma ? to.toLocaleString('ja-JP') : to; }
+    if(reduced){ el.textContent = comma ? to.toLocaleString('ja-JP') : to; glow.classList.remove('igniting'); }
     else requestAnimationFrame(step);
   });
 },{threshold:.6});
